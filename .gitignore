@@ -37,3 +37,14 @@ venv/
 __pycache__/
 *.py[cod]
 .pytest_cache/
+
+# Phase 2B: only the eight reviewed curated website outputs are publishable.
+/portfolio/web/*
+!/portfolio/web/manifest.json
+!/portfolio/web/features.csv
+!/portfolio/web/archetypes.csv
+!/portfolio/web/spells.csv
+!/portfolio/web/fingerprint.csv
+!/portfolio/web/neighbours.csv
+!/portfolio/web/acceptance.csv
+!/portfolio/web/facts.md

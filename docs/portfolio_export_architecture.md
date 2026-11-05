@@ -1,19 +1,19 @@
-# Portfolio research-data handoff — proposed schema v1
+# Portfolio research-data handoff — implemented schema 1.1.0
 
-**Phase 2A design; no website datasets or frontend generated.** The eventual directory is `portfolio/web/`. Generation should be a small Python command over saved tables, followed by an independent round-trip validator. It must not import notebook execution code, deserialize `.joblib` models, refit statistics or hand-transcribe numerical tables. The read-only preflight is implemented now in `scripts/validate_research_handoff.py`.
+**Implemented in Phase 2B.** The curated release directory is `portfolio/web/`. A small Python exporter reads saved tables and an independent round-trip validator checks the result. It must not import notebook execution code, deserialize `.joblib` models, refit statistics or hand-transcribe numerical tables. The read-only preflight is implemented now in `scripts/validate_research_handoff.py`.
 
 ## Build and publication boundary
 
-Proposed Phase 2B command interface (not yet implemented):
+Implemented command interface (choose a new staging directory for each build):
 
 ```sh
 python3 scripts/export_portfolio.py --data-root data/processed --output .local/web-build
 python3 scripts/validate_portfolio.py --data-root data/processed --web-root .local/web-build
 ```
 
-The exporter should require a new/empty output directory, validate sources first, build in a temporary sibling directory, validate round trips, then rename the complete build into place. Failure must leave existing builds and research artifacts untouched. Use an explicit source registry, not recursive first-match filename discovery. Produce all eight agreed files in one build, without partial publication.
+The exporter requires a nonexistent output directory, validate sources first, build in a temporary sibling directory, validate round trips, then rename the complete build into place. Failure must leave existing builds and research artifacts untouched. Use an explicit source registry, not recursive first-match filename discovery. Produce all eight agreed files in one build, without partial publication.
 
-A later publication decision is required before copying validated generated data into `portfolio/web/` or tracking it. Existing safeguards reject generated exports; Phase 2A does not relax them. Do not add generated CSVs with `git add -f`. The portfolio frontend belongs to a separate collaborator and is outside this repository task.
+The user authorized publication of these eight curated outputs in Phase 2B. Safeguards now allow only those exact generated paths, with 6 MB and 3 MB caps for fingerprint and neighbour tables respectively; other files retain the 2 MB cap. Do not add generated CSVs with `git add -f`. The portfolio frontend belongs to a separate collaborator and is outside this repository task.
 
 ## Identifiers, ordering and serialization
 
@@ -33,7 +33,7 @@ The paths abbreviated N04–N08 below are `data/processed/notebook_04_outputs/` 
 
 An object containing:
 
-- `schema_version` (start `1.0.0`), `data_version` (explicit research release), `exporter_version` and `source_commit` (full Git commit used for export code).
+- `schema_version` (`1.1.0`; the Phase 2A draft was `1.0.0`), `data_version` (explicit research release), `exporter_version` and `source_commit` (the latest full Git commit affecting the recorded build-input files, verified against their bytes; unrelated documentation/output commits do not change it), and `source_tree_dirty` (must be false for publication).
 - `observational_unit = "player-club-season spell"`, `n_spells = 1396`, `n_players = 665`, `n_features = 20`, `n_clusters = 5`, `n_neighbours = 13960`, `n_fingerprint_rows = 27920`; season bounds and the five leagues.
 - `feature_order`, `family_order`, method identifiers, minutes threshold and interpretation limitations, consolidated from the N06, N07 and N08 manifests and documented eligibility.
 - `pca_variance`: original N05 variance rows, not recomputed PCA. `primary_similarity = "standardized_20d_euclidean"`, `top_k = 10`, `same_player_excluded = true`, retrospective full-period comparison scope.
@@ -45,9 +45,9 @@ Schema versions track field/meaning changes; data versions track source-artifact
 
 ### `features.csv` — 20 rows
 
-Columns: `feature_order` (0-based integer), `feature`, `display_name`, `macro_family`, `formula`, `source_columns` (JSON array encoded as a CSV string), `denominator`, `unit`, `interpretation`, `limitations`, `family_weight` (float), `unit_status` (`verified_definition` or `unresolved_physical_unit`).
+Columns: `feature_order` (0-based integer), `feature`, `display_name`, `macro_family`, `formula`, `source_columns` (JSON array encoded as a CSV string), `denominator`, `unit`, `interpretation`, `limitations`, `family_weight` (float), `unit_status` (`verified_definition` or `unresolved_physical_unit`), `display_precision` (integer decimal places), `display_multiplier` (float) and `display_suffix` (string, possibly empty).
 
-Order/family/weight come from N04 `winger_style_feature_specification.csv`; definitions come from [feature_dictionary.md](feature_dictionary.md), checked against Notebook 04. Phase 2B should maintain one reviewed metadata representation and render/export it deterministically, not maintain divergent hand-edited tables. Formula units can be verified from code without proving a donor physical distance unit. `avg_shot_distance` must keep the unresolved-unit flag.
+Order/family/weight come from N04 `winger_style_feature_specification.csv`; definitions come from [feature_dictionary.md](feature_dictionary.md), checked against Notebook 04. The exporter parses the reviewed Markdown dictionary as the single human-authored definition source. `interpretation` is the readable feature definition. Display metadata is derived by explicit rules: raw ratio shares multiply by 100 and display one decimal with `%`; distance displays one decimal without an assumed physical unit; other rates display two decimals. Stored raw values never use those display transformations. Formula units can be verified from code without proving a donor physical distance unit. `avg_shot_distance` must keep the unresolved-unit flag.
 
 ### `archetypes.csv` — 5 rows
 
@@ -106,11 +106,26 @@ The following exact keys uniquely resolve in the Notebook 08 catalogue. Public a
 
 Use all 20 saved fingerprint rows, primary neighbour rows, original PCA coordinates and assignment diagnostics for these profiles. Do not invent qualitative explanations from the selected names alone. A narrative should cite the actual high/low features and centroid comparisons from those records.
 
-## Validation gates and Phase 2B sequence
+## Validation gates and release process
 
-1. Run the current read-only validator and pin source hashes. Keep the inspected integer `age` field; decide the reviewed metadata storage format.
-2. Implement the isolated exporter and independent CSV/JSON schema validator. Do not deserialize models. Verify all source indices against identity keys before mapping IDs.
+1. Run the read-only handoff validator and pin source hashes. The integer `age` field and Markdown definition source are resolved.
+2. Run the isolated exporter and independent CSV/JSON schema validator. Do not deserialize models. Verify all source indices against identity keys before mapping IDs.
 3. Check exact counts (1,396/665/20/5), feature order, five original assignments and centroid IDs, 27,920 fingerprints, 13,960 neighbours, unique spell keys, complete foreign keys and saved PCA/distance preservation. Recompute stored-pair distances as a separate diagnostic without reranking.
 4. Verify percentiles against their correct reference populations; compare original centroid margins/robustness flags; resolve all three featured spells by exact key. Assert no infinite/NaN required values or accidental index columns.
 5. Read the generated files back and compare to authoritative sources. Build twice in separate temporary directories and require byte-identical files. Add meaningful negative tests for reordered input identities, changed feature order, same-player neighbours, altered distances, duplicate IDs and missing source files.
-6. Review the contract and publication rights/boundaries before promoting any generated files into the portfolio handoff. Create a separate development PR; no direct main write or frontend implementation is implied.
+6. Promote only the validated eight-file bundle to the authorized `portfolio/web/` directory and submit a development PR. Phase 2B must not be merged before review; no direct main write or frontend implementation is implied.
+
+
+## Explicit Phase 2B contract resolutions
+
+Schema 1.1.0 adds display precision/multiplier/suffix fields to the draft feature schema. It retains the acceptance ledger columns and extends their contents with ten `comparison_20d` rows plus population, integrity and featured-profile checks. It publishes no rounded analytical values: 17-significant-digit CSV serialization round-trips exactly; browser arithmetic uses absolute and relative tolerance 1e-10. Display precision is a UI recommendation, not an export-rounding operation.
+
+Each comparison's `expected` and `actual` cells contain JSON objects with `target_spell_id`, `candidate_spell_id`, `distance` and `top3` (ordered `{feature, squared_contribution}` objects). Contributions are `(z_target - z_candidate)^2`; ties follow final feature order. Expected uses original saved standardized values; actual uses reopened website fingerprint rows. The ten pairs comprise the three featured players and their saved nearest neighbours, the three featured-to-featured combinations, the globally closest saved first-neighbour pair, Doku 2023–24 versus Vinícius 2022–23, Messi 2018–19 versus Neymar 2021–22, and Doku versus his most distant distinct footballer's spell. The final case uses one reference vector against the saved matrix; it neither refits a model nor alters any neighbour ranking. Case IDs and pair spell IDs are explicit in the ledger. The extra integrity rows hash canonical JSON numeric values with SHA-256; they are not browser distance cases.
+
+The manifest's embedded CSV schemas define names, types, order and nullability; all v1.1 analytical fields are required and finite. Only `display_suffix` permits empty strings. `facts.md` is Markdown rather than a typed table. JSON is UTF-8, sorted keys, finite numeric values and no timestamps. Data release is `2017-2024.phase1-final.v1`; exporter version is `1.0.0`. Source/build hashes and the verified source commit distinguish exact releases. See [workflow and browser handoff](website_export_workflow.md).
+
+## Visualization requirements verified on the full population
+
+PCA bounds PC1 [-8.5, 12.5] and PC2 [-6.5, 7] contain all 1,396 spells. Observed ranges are PC1 [-7.810943, 11.998927] and PC2 [-5.948929, 6.688816]. The manifest records unrounded extrema and a zero overflow count. Five archetype colors must be visible immediately; selection uses the separate red indicator.
+
+The prototype fingerprint axis [-3, 5] excludes 16 feature records. The observed player z-score range is [-4.229951, 9.426019]. The frontend must expand its domain to include every displayed player and centroid value, retaining true values in tooltips; it must not clamp or silently clip. Use archetype-colored player dots, open-diamond centroids, a grey ±1 standard-deviation band, the population mean at z=0 and red selected features. The exact bounds/counts are generated into `manifest.json`; this specification does not implement charts.

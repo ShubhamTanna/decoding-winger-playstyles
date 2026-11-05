@@ -31,3 +31,7 @@ Push to the feature branch and open a PR against `main`; do not force push. GitH
 Read environment.md before installing or running anything. The candidate environment is not a tested local runtime. The notebooks retain their original Colab-oriented paths; a fresh clone is not a turnkey execution environment. Preserve completed manual decisions and use isolated outputs for any authorized rerun.
 
 The repository's earlier history already contains executed notebook outputs. This setup removes them from the new branch tip; it does not rewrite or erase historical commits.
+
+## Curated website publication (Phase 2B)
+
+The user's Phase 2B instruction authorizes only the eight reviewed files in `portfolio/web/`. Data, snapshots and model binaries remain private. Exact-path `.gitignore` exceptions and the publication allowlist permit those files, with explicit 6 MB/3 MB limits for fingerprint/neighbour CSVs. The hook verifies staged bundle hashes and source-code consistency; the independent website validator supplies semantic checks before staging. See [website export workflow](website_export_workflow.md).
