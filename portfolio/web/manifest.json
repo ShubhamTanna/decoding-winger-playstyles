@@ -1,0 +1,822 @@
+{
+  "archetype_colors": {
+    "C0": "#b5608f",
+    "C1": "#d18b00",
+    "C2": "#00876a",
+    "C3": "#0068a8",
+    "C4": "#3d9fd6"
+  },
+  "comparison_scope": "retrospective full study period",
+  "data_version": "2017-2024.phase1-final.v1",
+  "exporter_version": "1.0.0",
+  "family_order": [
+    "Territory",
+    "Receiving",
+    "Carrying",
+    "Dribbling",
+    "Passing",
+    "Crossing",
+    "Shooting",
+    "Behavioural Choice"
+  ],
+  "feature_order": [
+    "attacking_third_touch_share",
+    "box_penetration_touch_share",
+    "progressive_receptions_p90",
+    "progressive_reception_share",
+    "progressive_carries_p90",
+    "progressive_carry_share",
+    "carries_into_box_p90",
+    "take_ons_p90",
+    "take_ons_per_100_live_touches",
+    "progressive_passes_p90",
+    "progressive_pass_share",
+    "passes_into_box_p90",
+    "crosses_p90",
+    "cross_pass_share",
+    "long_pass_share",
+    "shots_p90",
+    "shots_per_100_att3rd_touches",
+    "avg_shot_distance",
+    "carry_progression_share",
+    "carry_box_entry_share"
+  ],
+  "featured_spells": [
+    {
+      "cluster_id": 3,
+      "display_club": "Real Madrid",
+      "display_name": "Vinícius Júnior",
+      "player_id": "Vinicius Júnior_2000",
+      "season": "2022-2023",
+      "spell_id": "spell_5143b9463bb9693f1e7cd49451fa3bc3df4cb506479ea119f6247406dbf5cb9c",
+      "squad": "Real Madrid"
+    },
+    {
+      "cluster_id": 4,
+      "display_club": "Paris Saint-Germain",
+      "display_name": "Neymar",
+      "player_id": "Neymar_1992",
+      "season": "2021-2022",
+      "spell_id": "spell_8f1bd18729e941a5a3b6e8e434c221d40faf98b740eff059b4d4b86ee42fce00",
+      "squad": "Paris S-G"
+    },
+    {
+      "cluster_id": 1,
+      "display_club": "Leeds United",
+      "display_name": "Raphinha",
+      "player_id": "Raphinha_1996",
+      "season": "2020-2021",
+      "spell_id": "spell_af120efe7bfdf9052622057e5dd0d673725a3cd20a45666797aa2c7bf7136542",
+      "squad": "Leeds United"
+    }
+  ],
+  "files": {
+    "acceptance.csv": {
+      "bytes": 21078,
+      "rows": 31,
+      "schema": [
+        {
+          "name": "check_id",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "entity_id",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "field",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "expected",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "actual",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "atol",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "rtol",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "passed",
+          "nullable": false,
+          "type": "boolean"
+        },
+        {
+          "name": "source_ref",
+          "nullable": false,
+          "type": "string"
+        }
+      ],
+      "sha256": "6841b49924cc0bf8881e9ba1793e508d6c81bebaa2d2e022236b84b802176b9d"
+    },
+    "archetypes.csv": {
+      "bytes": 2727,
+      "rows": 5,
+      "schema": [
+        {
+          "name": "cluster_id",
+          "nullable": false,
+          "type": "integer"
+        },
+        {
+          "name": "label",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "n_spells",
+          "nullable": false,
+          "type": "integer"
+        },
+        {
+          "name": "attacking_third_touch_share",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "box_penetration_touch_share",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "progressive_receptions_p90",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "progressive_reception_share",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "progressive_carries_p90",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "progressive_carry_share",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "carries_into_box_p90",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "take_ons_p90",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "take_ons_per_100_live_touches",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "progressive_passes_p90",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "progressive_pass_share",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "passes_into_box_p90",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "crosses_p90",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "cross_pass_share",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "long_pass_share",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "shots_p90",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "shots_per_100_att3rd_touches",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "avg_shot_distance",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "carry_progression_share",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "carry_box_entry_share",
+          "nullable": false,
+          "type": "number"
+        }
+      ],
+      "sha256": "9123c8cc0a1df31935c456cbcc19772c2e654e111a3caf7a65189b7514a4a1d6"
+    },
+    "facts.md": {
+      "bytes": 6439,
+      "media_type": "text/markdown",
+      "sha256": "0046b14d55ab93899f3ae73a77d02418e1d816bf9f972368d1e90e9ca8f8d5a9"
+    },
+    "features.csv": {
+      "bytes": 7956,
+      "rows": 20,
+      "schema": [
+        {
+          "name": "feature_order",
+          "nullable": false,
+          "type": "integer"
+        },
+        {
+          "name": "feature",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "display_name",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "macro_family",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "formula",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "source_columns",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "denominator",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "unit",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "interpretation",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "limitations",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "family_weight",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "unit_status",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "display_precision",
+          "nullable": false,
+          "type": "integer"
+        },
+        {
+          "name": "display_multiplier",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "allow_empty": true,
+          "name": "display_suffix",
+          "nullable": false,
+          "type": "string"
+        }
+      ],
+      "sha256": "e0f5f15e770e09f3714924f3684868d972d19dd1a4e942329af332591d962d76"
+    },
+    "fingerprint.csv": {
+      "bytes": 5068111,
+      "rows": 27920,
+      "schema": [
+        {
+          "name": "spell_id",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "feature",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "macro_family",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "raw_value",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "z_score",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "population_percentile",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "assigned_centroid_z",
+          "nullable": false,
+          "type": "number"
+        }
+      ],
+      "sha256": "f7ac11b4d731304d3ac790e6c898f3b760bc95c8191038a7b4bc8c75db90bbd1"
+    },
+    "neighbours.csv": {
+      "bytes": 2275340,
+      "rows": 13960,
+      "schema": [
+        {
+          "name": "target_spell_id",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "rank",
+          "nullable": false,
+          "type": "integer"
+        },
+        {
+          "name": "candidate_spell_id",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "distance",
+          "nullable": false,
+          "type": "number"
+        }
+      ],
+      "sha256": "485ae88f1ce260c470da4ebccaeec68537f3c8b58a7fe9b73bf476a7034368d1"
+    },
+    "spells.csv": {
+      "bytes": 903010,
+      "rows": 1396,
+      "schema": [
+        {
+          "name": "spell_id",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "observation_row_idx",
+          "nullable": false,
+          "type": "integer"
+        },
+        {
+          "name": "player_id",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "player",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "squad",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "comp",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "season",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "age",
+          "nullable": false,
+          "type": "integer"
+        },
+        {
+          "name": "born",
+          "nullable": false,
+          "type": "integer"
+        },
+        {
+          "name": "Minutes",
+          "nullable": false,
+          "type": "integer"
+        },
+        {
+          "name": "k5_cluster",
+          "nullable": false,
+          "type": "integer"
+        },
+        {
+          "name": "archetype_name",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "k5_silhouette",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "k5_centroid_distance",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "k5_second_centroid_distance",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "k5_centroid_margin",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "PC1",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "PC2",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "PC3",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "PC4",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "PC5",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "k5_family_balanced_aligned",
+          "nullable": false,
+          "type": "integer"
+        },
+        {
+          "name": "k5_equal_player_weight_aligned",
+          "nullable": false,
+          "type": "integer"
+        },
+        {
+          "name": "k5_extreme_trimmed_aligned",
+          "nullable": false,
+          "type": "integer"
+        },
+        {
+          "name": "k5_label_preserved_all_three_tests",
+          "nullable": false,
+          "type": "boolean"
+        },
+        {
+          "name": "distance_to_cluster_0",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "distance_to_cluster_1",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "distance_to_cluster_2",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "distance_to_cluster_3",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "distance_to_cluster_4",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "alternative_cluster",
+          "nullable": false,
+          "type": "integer"
+        },
+        {
+          "name": "alternative_archetype_name",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "alternative_centroid_distance",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "centroid_distance_pct_within_cluster",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "nearest_spell_id",
+          "nullable": false,
+          "type": "string"
+        },
+        {
+          "name": "nearest_distance",
+          "nullable": false,
+          "type": "number"
+        },
+        {
+          "name": "nearest_distance_population_percentile",
+          "nullable": false,
+          "type": "number"
+        }
+      ],
+      "sha256": "1b0c8344345ee5f6e00cf92e6f5b9970b108d3aa1fcc016581b62930183eb291"
+    }
+  },
+  "interaction_color": "#ff0000",
+  "leagues": [
+    "Bundesliga",
+    "La Liga",
+    "Ligue 1",
+    "Premier League",
+    "Serie A"
+  ],
+  "limitations": [
+    "Archetypes are descriptive, not natural categories.",
+    "Percentiles describe behaviour, not quality.",
+    "Centroid margins are not probabilities.",
+    "Repeated footballers affect population percentiles.",
+    "Historical nearest neighbours are not substitutes for measures of player effectiveness."
+  ],
+  "minimum_minutes": 1125,
+  "n_clusters": 5,
+  "n_features": 20,
+  "n_fingerprint_rows": 27920,
+  "n_neighbours": 13960,
+  "n_players": 665,
+  "n_spells": 1396,
+  "observational_unit": "player-club-season spell",
+  "pca_variance": [
+    {
+      "component": "PC1",
+      "cumulative_variance_pct": 35.55904607449477,
+      "explained_variance_pct": 35.55904607449477,
+      "explained_variance_ratio": 0.3555904607449477
+    },
+    {
+      "component": "PC2",
+      "cumulative_variance_pct": 54.883697039788125,
+      "explained_variance_pct": 19.32465096529335,
+      "explained_variance_ratio": 0.19324650965293352
+    },
+    {
+      "component": "PC3",
+      "cumulative_variance_pct": 68.89052691706914,
+      "explained_variance_pct": 14.006829877281016,
+      "explained_variance_ratio": 0.14006829877281016
+    },
+    {
+      "component": "PC4",
+      "cumulative_variance_pct": 77.39670588634772,
+      "explained_variance_pct": 8.506178969278583,
+      "explained_variance_ratio": 0.08506178969278583
+    },
+    {
+      "component": "PC5",
+      "cumulative_variance_pct": 85.2302402255361,
+      "explained_variance_pct": 7.833534339188369,
+      "explained_variance_ratio": 0.0783353433918837
+    },
+    {
+      "component": "PC6",
+      "cumulative_variance_pct": 88.57449745713564,
+      "explained_variance_pct": 3.344257231599538,
+      "explained_variance_ratio": 0.03344257231599538
+    },
+    {
+      "component": "PC7",
+      "cumulative_variance_pct": 91.43342230210472,
+      "explained_variance_pct": 2.8589248449690747,
+      "explained_variance_ratio": 0.028589248449690748
+    },
+    {
+      "component": "PC8",
+      "cumulative_variance_pct": 93.59603941855495,
+      "explained_variance_pct": 2.1626171164502295,
+      "explained_variance_ratio": 0.021626171164502297
+    },
+    {
+      "component": "PC9",
+      "cumulative_variance_pct": 95.37853691146883,
+      "explained_variance_pct": 1.7824974929138788,
+      "explained_variance_ratio": 0.017824974929138787
+    },
+    {
+      "component": "PC10",
+      "cumulative_variance_pct": 96.6032781395934,
+      "explained_variance_pct": 1.2247412281245722,
+      "explained_variance_ratio": 0.012247412281245722
+    },
+    {
+      "component": "PC11",
+      "cumulative_variance_pct": 97.67446316501247,
+      "explained_variance_pct": 1.0711850254190756,
+      "explained_variance_ratio": 0.010711850254190755
+    },
+    {
+      "component": "PC12",
+      "cumulative_variance_pct": 98.32925435352084,
+      "explained_variance_pct": 0.654791188508363,
+      "explained_variance_ratio": 0.0065479118850836305
+    },
+    {
+      "component": "PC13",
+      "cumulative_variance_pct": 98.85205630050861,
+      "explained_variance_pct": 0.522801946987775,
+      "explained_variance_ratio": 0.00522801946987775
+    },
+    {
+      "component": "PC14",
+      "cumulative_variance_pct": 99.20517400063247,
+      "explained_variance_pct": 0.3531177001238564,
+      "explained_variance_ratio": 0.0035311770012385643
+    },
+    {
+      "component": "PC15",
+      "cumulative_variance_pct": 99.40981228479593,
+      "explained_variance_pct": 0.20463828416346397,
+      "explained_variance_ratio": 0.00204638284163464
+    },
+    {
+      "component": "PC16",
+      "cumulative_variance_pct": 99.58471119477996,
+      "explained_variance_pct": 0.17489890998402557,
+      "explained_variance_ratio": 0.0017489890998402557
+    },
+    {
+      "component": "PC17",
+      "cumulative_variance_pct": 99.73711678199605,
+      "explained_variance_pct": 0.15240558721610026,
+      "explained_variance_ratio": 0.0015240558721610026
+    },
+    {
+      "component": "PC18",
+      "cumulative_variance_pct": 99.84905775298535,
+      "explained_variance_pct": 0.11194097098929448,
+      "explained_variance_ratio": 0.0011194097098929448
+    },
+    {
+      "component": "PC19",
+      "cumulative_variance_pct": 99.94140910515172,
+      "explained_variance_pct": 0.09235135216637934,
+      "explained_variance_ratio": 0.0009235135216637934
+    },
+    {
+      "component": "PC20",
+      "cumulative_variance_pct": 100.0,
+      "explained_variance_pct": 0.058590894848277814,
+      "explained_variance_ratio": 0.0005859089484827781
+    }
+  ],
+  "precision": {
+    "atol": 1e-10,
+    "display": "features.csv display_multiplier/precision/suffix apply only in UI; distance and z-score display 3 decimals, percentiles 1 decimal",
+    "rtol": 1e-10,
+    "storage": "17 significant digits, float64 round-trip; no analytical rounding"
+  },
+  "primary_similarity": "standardized_20d_euclidean",
+  "same_player_excluded": true,
+  "schema_version": "1.1.0",
+  "season_bounds": [
+    "2017-2018",
+    "2023-2024"
+  ],
+  "source_commit": "49ffbac379e98d7ffd7fb6a57b687c977cfacb95",
+  "source_tree_dirty": false,
+  "sources": {
+    "data/processed/notebook_04_outputs/winger_style_feature_specification.csv": "d2d625b7efa8b29c04de026a82a81bcbba5b9fcc95469f57098064a3e90641aa",
+    "data/processed/notebook_04_outputs/winger_style_features_raw.parquet": "f4f802aee0233acc712f8dc46a73474944301e56804b5a90c1c0fddae53b90f0",
+    "data/processed/notebook_04_outputs/winger_style_features_scaled.parquet": "a8c7e0259765efade640102adef264b61fd24d5f3dd44e81d679c2c7d10462b7",
+    "data/processed/notebook_05_outputs/pca_primary_scores.parquet": "2908b87e6693ba9e0dfae1ae10517f83fca7a88dcedbc89a93d6bf30a4de70b5",
+    "data/processed/notebook_05_outputs/pca_primary_variance.csv": "9623ec0e384a88f8c78a5b648fa57c8aad952f8fc29a673019016574dcc52c6c",
+    "data/processed/notebook_06_outputs/similarity_manifest.json": "682638055f5e908d3b67c3dc502bb24793362904f583d916d1ccdd5835c422c5",
+    "data/processed/notebook_06_outputs/top10_primary_euclidean.parquet": "14592716ab8c41ef3ae7b522b55d266c9238f47475eb43a760d1c4442373af61",
+    "data/processed/notebook_07_outputs/winger_clustering_manifest.json": "0f3b805f71b4de6c19f901c4d7c0f88976e55ea4e1bbf57d30ff875abc54b878",
+    "data/processed/notebook_07_outputs/winger_clustering_robustness.csv": "37af10363d3e97e94f470f6defa7d383e7c23dbfda56ac4aed5c7ce92674df5e",
+    "data/processed/notebook_07_outputs/winger_k5_centroids_standardized.csv": "eda16da3565f5c30497ffaeac541086b1e86ae6d9b1913f5c580081cc30c3f2d",
+    "data/processed/notebook_07_outputs/winger_k5_profile_assignments.parquet": "3bb1f94969978600c689b895e4e17f8449c87eeec48b71ca64642b6424e9b550",
+    "data/processed/notebook_08_outputs/winger_player_fingerprint_long.parquet": "fd85a9c858ef65475af5adfad7829bc765d3270abb979d582928a0f9e370b5ef",
+    "data/processed/notebook_08_outputs/winger_player_profile_catalog.parquet": "3bdb172e8a7d68d5fdebeb21af149c59ed64220efbf50b156777f99fd2116e43",
+    "data/processed/notebook_08_outputs/winger_player_profiles_manifest.json": "0a6148265eb993a5706069ce3333ea17cb11d3dc36b9f821af68e8fc8fbf27cf",
+    "docs/feature_dictionary.md": "3cdce3fc7ba87058d30fdd9d12bc473012ea4a0455cafa715f9fe91feadf0d0d",
+    "scripts/export_portfolio.py": "ee60c8a794821791e8ee6091fff2842dfef0be913c86084f79079f6d6b8086d8",
+    "scripts/portfolio_contract.py": "bcb336f109499fe30d9aa8ed94451d473697a8a9ed9fede05c129e81fb1dc08c",
+    "scripts/validate_portfolio.py": "20c55f3ca300bdb73a9d5f3ec4e015491dcfb19679c25eea3637461530393bc9"
+  },
+  "top_k": 10,
+  "visualization": {
+    "fingerprint": {
+      "centroid_marker": "open diamond",
+      "observed_z": [
+        -4.22995118773749,
+        9.426019242808566
+      ],
+      "outside_prototype_feature_rows": 16,
+      "overflow_policy": "Expand the displayed domain to include every selected player and centroid value; never clamp or silently clip. Show the true value in the tooltip.",
+      "player_marker": "archetype-colored dot",
+      "population_mean": 0,
+      "prototype_z": [
+        -3.0,
+        5.0
+      ],
+      "reference_band": "grey -1 to +1",
+      "selected_feature_color": "#ff0000"
+    },
+    "pca": {
+      "observed_pc1": [
+        -7.810942623950366,
+        11.99892658461041
+      ],
+      "observed_pc2": [
+        -5.948929082727244,
+        6.688815594571803
+      ],
+      "outside_prototype": 0,
+      "prototype_pc1": [
+        -8.5,
+        12.5
+      ],
+      "prototype_pc2": [
+        -6.5,
+        7.0
+      ]
+    }
+  }
+}
