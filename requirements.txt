@@ -1,0 +1,43 @@
+# Candidate Python 3.12 environment; see docs/environment.md.
+# Metadata-resolved on macOS arm64; NOT a recovered or runtime-validated Colab lock.
+# Direct notebook dependencies:
+scikit-learn==1.6.1
+pandas==2.2.3
+pyarrow==23.0.1
+numpy==2.3.5
+openpyxl==3.1.5
+scipy==1.18.1
+matplotlib==3.11.2
+RapidFuzz==3.14.6
+joblib==1.6.0
+ipython==9.18.1
+
+# Resolved transitive dependencies (pinned to prevent resolver drift).
+asttokens==3.0.2
+cloudpickle==3.1.2
+contourpy==1.4.0
+cycler==0.12.1
+et_xmlfile==2.0.0
+executing==2.3.0
+fonttools==4.68.0
+ipython_pygments_lexers==1.1.1
+jedi==0.20.1
+kiwisolver==1.5.1
+matplotlib-inline==0.2.2
+packaging==26.3
+parso==0.8.7
+pexpect==4.9.0
+pillow==13.0.0
+prompt_toolkit==3.0.53
+psutil==7.2.2
+ptyprocess==0.7.0
+pure_eval==0.2.4
+Pygments==2.21.0
+pyparsing==3.3.3
+python-dateutil==4.0.0
+pytz==2026.6
+stack-data==0.6.3
+threadpoolctl==3.7.0
+traitlets==5.16.1
+tzdata==2026.6
+wcwidth==0.9.4
