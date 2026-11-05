@@ -12,6 +12,10 @@ def git(*args):
 
 allowed = {".gitignore", "AGENTS.md", "README.md", "LICENSE", "requirements.txt",
            "docs/environment.md", "docs/local-workflow.md",
+           "docs/feature_dictionary.md", "docs/methodology.md",
+           "docs/reproducibility.md", "docs/provenance.md",
+           "docs/portfolio_export_architecture.md", "docs/phase2a_validation.md",
+           "scripts/validate_research_handoff.py",
            ".githooks/pre-commit", "scripts/check_publication.py"}
 secret_patterns = [rb"gh[pousr]_" + rb"[A-Za-z0-9]{30,}",
                    rb"github_pat_" + rb"[A-Za-z0-9_]{30,}",
