@@ -12,6 +12,7 @@ def git(*args):
 
 allowed = {".gitignore", "AGENTS.md", "README.md", "LICENSE", "requirements.txt",
            "docs/environment.md", "docs/local-workflow.md",
+           "docs/frontend_research_support.md", "scripts/export_pca_explainer.py",
            "docs/feature_dictionary.md", "docs/methodology.md",
            "docs/reproducibility.md", "docs/provenance.md",
            "docs/portfolio_export_architecture.md", "docs/phase2a_validation.md",
