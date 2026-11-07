@@ -57,13 +57,14 @@ K-Means boundaries overlap and depend on feature representation and population w
 ```text
 notebooks/        Eight publication copies, with saved outputs removed
 docs/             Dictionary, methodology, provenance and handoff design
-scripts/          Publication and read-only research validation checks
+scripts/          Export, validation and publication checks
+portfolio/web/    Eight curated public website files
 requirements.txt  Provisional Python 3.12 dependency specification
 data/             Local private inputs and saved artifacts (ignored)
 .local/           Preserved executed evidence and local checks (ignored)
 ```
 
-The repository publishes research code and documentation, not the datasets or fitted models. A fresh clone does not contain the inputs needed to reproduce results. The notebooks retain Colab `/content/` paths and require manual staging. Dependency resolution has been checked, but the candidate environment has **not** passed a clean-kernel pipeline run.
+The repository publishes research code, documentation and eight curated website data files under `portfolio/web/`. Original source datasets, full intermediate research artifacts and fitted models remain private. A fresh clone does not contain the inputs needed to reproduce results. The notebooks retain Colab `/content/` paths and require manual staging. Dependency resolution has been checked, but the candidate environment has **not** passed a clean-kernel pipeline run.
 
 Start with [reproducibility instructions](docs/reproducibility.md), [environment status](docs/environment.md) and [source provenance](docs/provenance.md). With the private saved artifacts and a suitable existing pandas/NumPy/PyArrow runtime, run `python3 scripts/validate_research_handoff.py` for read-only checks. This does not fit models or regenerate research exports. Publication safeguards are described in [local workflow](docs/local-workflow.md).
 
@@ -71,4 +72,4 @@ Start with [reproducibility instructions](docs/reproducibility.md), [environment
 
 The statistical data are FBref-derived historical exports. The likely initial Kaggle source is [FBref 2017–2024 for Europe's Top 5 leagues](https://www.kaggle.com/datasets/akshankrithick/fbref-2017-2024-for-europes-top-5-leagues); enrichment uses [Top 5 League Football Player Stats (2017–2025)](https://www.kaggle.com/datasets/emrey3lmaz/top-5-league-football-player-stats-2017-2025). Auxiliary positions come from historical FIFA/SoFIFA data and documented manual decisions. Original download versions and dates are not fully recovered; see [provenance](docs/provenance.md). The MIT license covers this repository's code and documentation, not a grant of rights to redistribute third-party datasets.
 
-A research case study and Winger Style Explorer are planned for [shubhamtanna.in](https://shubhamtanna.in). The project-page route is not yet confirmed. The [portfolio export specification](docs/portfolio_export_architecture.md) prepares the research handoff; no frontend is included here.
+A research case study and Winger Style Explorer are planned for [shubhamtanna.in](https://shubhamtanna.in). The project-page route is not yet confirmed. The [portfolio export specification](docs/portfolio_export_architecture.md) and [build/browser workflow](docs/website_export_workflow.md) describe the implemented handoff. The public bundle includes full profiles, fingerprints, neighbours and ten numerical reference comparisons; no frontend is included here.

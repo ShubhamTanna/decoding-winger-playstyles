@@ -51,4 +51,4 @@ git diff --cached --check
 git diff --cached --stat
 ```
 
-The path allowlist is extended only for the new documentation and read-only validation script. Datasets, raw sources, generated website exports, models, private snapshots, backups and credentials remain excluded. Public notebook sources and existing model outputs are not modified by Phase 2A.
+The path allowlist includes reviewed documentation and validation/export scripts. Phase 2B additionally authorizes exactly eight curated files under `portfolio/web/`; original datasets, raw sources, other generated exports, models, private snapshots, backups and credentials remain excluded. See [website export workflow](website_export_workflow.md) for building and validating the curated bundle. Public notebook sources and historical model outputs remain unchanged.

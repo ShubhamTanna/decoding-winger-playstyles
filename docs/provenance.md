@@ -40,6 +40,6 @@ Notebook 01 documents player-ID collision handling. Notebook 03 documents the do
 
 The canonical local workspace holds `.local/research-snapshot/` with executed evidence and `.local/research-sha256.json` with original file hashes. Publication notebooks preserve approved source while removing outputs, execution counts and embedded state. Existing older Git history may still contain executed outputs; setup did not rewrite that history. Never treat a cleaned public notebook's lack of outputs as evidence that the research was not executed.
 
-## Future export provenance
+## Website export provenance
 
-Each export build should record schema/data/build versions, source commit, source artifact SHA-256 hashes, ordered feature list, population scope, method identifiers, approved colors and featured spell keys. Do not include absolute machine paths, private review contents or invented original download dates. Preserve the source spell key (`player_id`, `squad`, `season`) alongside deterministic web IDs and original observation indices; hashes identify the exact local artifact consumed, not its licensing status or original download provenance.
+Each website export build records schema/data/build versions, source commit, source artifact SHA-256 hashes, ordered feature list, population scope, method identifiers, approved colors and featured spell keys. Do not include absolute machine paths, private review contents or invented original download dates. Preserve the source spell key (`player_id`, `squad`, `season`) alongside deterministic web IDs and original observation indices; hashes identify the exact local artifact consumed, not its licensing status or original download provenance.
