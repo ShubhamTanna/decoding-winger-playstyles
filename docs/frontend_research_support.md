@@ -1,6 +1,6 @@
 # Research handoff for Claude · Schema 1.1.0
 
-## Two featured examples to add to editorial copy
+## Approved featured examples for editorial copy
 
 Use **Richarlison, Everton 2018–19** for C0 and **Carlos Soler, Valencia 2018–19** for C2. Richarlison combines a larger penalty-area share of attacking-third touches (+0.98 standard deviations), more shots per 100 attacking-third touches (+0.90) and a shorter average shot distance (−1.31). Soler combines more progressive passes per 90 (+0.54), a smaller carry share of progressive actions (−1.57) and a smaller attacking-third touch share (−1.29). Each sentence describes one spell relative to the pooled historical population.
 
@@ -15,7 +15,7 @@ The shortlist uses saved primary assignments and full-precision ascending distan
 | C2 | Alex Iwobi, Everton, 2022–23 | 10 / 278 | 1.9449649706036374 | `spell_e04d0e8eb5a6d0c535f54d37d7c3e8eaf4a10295daffea4544dc1fe7edd494e7` |
 | C2 | Thomas Lemar, Atlético Madrid, 2020–21 | 13 / 278 | 2.0152533410585574 | `spell_e8c2e96deda7c194757bbbd67d71a65693d6532439d986ed32661b97739a43d1` |
 
-Choupo-Moting is closer than Richarlison and shows particularly frequent shooting per attacking-third touch (+1.02). Oyarzabal shows the box involvement (+0.64) and shorter shot distance (−0.70), with shooting per attacking-third touch nearer the mean (+0.06). Iwobi and Lemar combine above-average progressive passes per 90 (+0.95 and +0.93) with below-average carry shares of progression (−1.28 and −1.25). The existing three featured entries remain in the released manifest. The two additions above are editorial candidates pending selection.
+Choupo-Moting is closer than Richarlison and shows particularly frequent shooting per attacking-third touch (+1.02). Oyarzabal shows the box involvement (+0.64) and shorter shot distance (−0.70), with shooting per attacking-third touch nearer the mean (+0.06). Iwobi and Lemar combine above-average progressive passes per 90 (+0.95 and +0.93) with below-average carry shares of progression (−1.28 and −1.25). Richarlison (C0) and Carlos Soler (C2) are approved editorial examples alongside Raphinha (C1, Leeds United 2020–21), Vinícius Júnior (C3, Real Madrid 2022–23) and Neymar (C4, Paris Saint-Germain 2021–22). Schema 1.1.0 lists the latter three in its manifest. Use the spell IDs in the table for the two additional examples.
 
 ## PCA explanations for the saved map
 
@@ -31,7 +31,7 @@ PC1 and PC2 together show 54.88% of standardized variation. PC3 brings the cumul
 
 **Optional companion export.** From the repository root run `python3 scripts/export_pca_explainer.py` (Python 3.10+). This writes `outputs/frontend-research-support/pca_explainer.json`. It names the compatible base schema and data release, records source hashes, and contains the ordered feature IDs and three named components, each with its variance ratio, 20 coefficients and 20 correlations. The same index always refers to the same feature. The check requires matching source feature order, centred unit-population-SD inputs, agreement on explained variance, and replay of every signed score and correlation against the website fingerprints. Maximum absolute error over 4,188 projected coordinates was 1.78 × 10⁻¹⁵.
 
-**Release proposal.** Keep the companion local for review. For formal adoption, publish an optional `pca_explainer.json` in a separately versioned additive release (proposed 1.2.0). Register its checksum, size and base-data identity, validate feature order, dimensions, scores and correlations before publication, and test the consumer's version handling. The existing eight-file 1.1.0 contract stays usable as released. If the two editorial picks are approved, append their spell IDs to the featured list in a future release and review any consumer assumptions that the list has exactly three entries.
+**Release proposal.** Keep the companion local for review. For formal adoption, publish an optional `pca_explainer.json` in a separately versioned additive release (proposed 1.2.0). Register its checksum, size and base-data identity, validate feature order, dimensions, scores and correlations before publication, and test the consumer's version handling. The existing eight-file 1.1.0 contract stays usable as released. If a future release adds the two approved spells to the featured list, review any consumer assumptions that the list has exactly three entries.
 
 ## Wording rules
 
