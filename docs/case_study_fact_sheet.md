@@ -74,6 +74,10 @@ For two spells use the square root of the sum of the 20 squared z-score differen
 
 N06 compared family-balanced Euclidean and standardized Manhattan distance with the primary lists. On average about 86% and 79% of the ten **footballer identities**, respectively, were retained. The nearest identity did not always survive. Those are agreements between lists, never scores for how similar two people are.
 
+**An unusual spell within C3.** Jérémy Doku (Manchester City, 2023–24) recorded 8.29 carries into the box per 90 (+9.43 SD) and 12.30 progressive carries per 90 (+6.47 SD). Across all 20 features, his distance from the pooled mean was 14.48, the largest among the 1,396 spells (next: 9.99). His distance from the C3 centre was 11.36 (next within C3: 8.37). His nearest spell by another footballer was Vinícius Júnior at Real Madrid in 2022–23, 7.15 units away. Doku retained C3 in all three sensitivity checks: he was an unusual member of the group, and the distances say nothing about his ability.
+
+Sources: N04 / `winger_style_features_raw.parquet`, `winger_style_features_scaled.parquet`; N07 / `winger_k5_centroids_standardized.csv`, `winger_k5_profile_assignments.parquet`; N06 / `top10_primary_euclidean.parquet`. Spell: `spell_c601a57ea8614558a13c03445c97d6b2310e7bd5953158b40fe0f0b73d9b7e53`.
+
 ## Two historical comparisons
 
 Each pair below uses fingerprints joined by spell ID and feature in model order. Distances are direct comparisons of the original global z-scores, not lookups in the other-footballer neighbour list. Raw rates and shares are displayed rounded here; exact inputs appear in the ledger.
